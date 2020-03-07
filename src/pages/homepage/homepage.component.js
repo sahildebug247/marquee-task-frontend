@@ -48,18 +48,24 @@ function HomePage({history}) {
         }
     };
     return(
-            <div className={'homepage-container'}>
-                <div className={'title'}>
-                    Start Typing to get the company names
-                </div>
-                <input type={'text'} value={searchInput} onChange={handleChange}/>
+        <div className='homepage-container'>
+            <div className='title'>
+                Start Typing to get the company names
+            </div>
+            <div className='search'>
+                <input type='text' value={searchInput} onChange={handleChange}/>
                 <button onClick={handleSubmit}>Submit</button>
+            </div>
+            <div className='company-name-wrapper' >
                 {companyList.map((company) => {
                     return (
-                        <div onClick={() => handleSelect(company.companyName, company.companyId)} key={company.companyId}>{company.companyName}</div>
+                        <div className='company-name' onClick={() => handleSelect(company.companyName, company.companyId)} key={company.companyId}>
+                            <span>{company.companyName}</span>
+                        </div>
                     );
                 })}
             </div>
+        </div>
     )
 }
 export default withRouter(HomePage);
